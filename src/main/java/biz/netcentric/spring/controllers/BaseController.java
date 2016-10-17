@@ -1,9 +1,12 @@
 package biz.netcentric.spring.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 @RestController
 public class BaseController {
@@ -18,9 +21,9 @@ public class BaseController {
 	}
 	
 	@RequestMapping("/templates.sly")
-	public String getTemplates(Model model) {
-		model.addAttribute("templateName", "sample template name");
-		return "templates";
+	public String getTemplates(Model model, HttpServletRequest request) {
+		model.addAttribute("person.name", "Mr. Robertson");
+		return "index.sly";
 	}
 
 }
